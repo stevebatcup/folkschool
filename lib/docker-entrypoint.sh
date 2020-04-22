@@ -8,12 +8,12 @@ then
 	rails assets:precompile
 
 	echo "Copying assets to NGINX"
-	mkdir -p /usr/share/nginx/html
-	cp -R public/* /usr/share/nginx/html
+	mkdir -p /usr/share/nginx/html/$APP_NAME
+	cp -R public/* /usr/share/nginx/html/$APP_NAME
 
 	echo "Copying NGINX config"
-	mkdir -p /etc/nginx/conf.d/
-	cp -R config/nginx.conf /etc/nginx/conf.d/default.conf
+	mkdir -p /etc/nginx/conf.d
+	cp config/nginx.conf /etc/nginx/conf.d/$APP_NAME.conf
 fi
 
 if [[ -a /usr/src/app/tmp/pids/server.pid ]]; then
